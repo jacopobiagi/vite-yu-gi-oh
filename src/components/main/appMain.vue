@@ -17,14 +17,26 @@ export default {
 </script>
 
 <template>
-    <div v-for="element in store.cardList.data">
-        <singleCard
-        :name="element.name"
-        :type="element.type"
-        :img="element.card_images[0].image_url"/>
-    </div>
+
+    <main>
+        <div>
+
+        </div>
+
+        
+        <div v-for="element in store.cardList">
+            <singleCard
+            :name="element.name"
+            :type="element.type"
+            :img="element.card_images[0].image_url"/>
+        </div>
+    </main>
+    
 </template>
 
-<script>
-
-</script>
+<style lang="scss" scoped>
+    main{
+        width: 100vw;
+        background-color: rgb(202, 137, 55);
+    }
+</style>

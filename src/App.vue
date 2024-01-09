@@ -19,11 +19,14 @@ export default{
   },
   methods:{
     getCharacters(){
+
+      const limit = 20;
+      const offset = 0;
       axios 
         .get(store.apiURL)
         .then(res => {
-          store.cardList = res.data;
-          console.log(store.cardList.data);
+          store.cardList = res.data.data.slice(0,20);
+          console.log(store.cardList);
         })
         .catch(err =>{
           console.log("Errori",err);
@@ -37,21 +40,19 @@ export default{
 </script>
   
 <template>
-  <section>
     <AppHeader/>
-  </section>
-
-  <section>
     <AppMain/>
-  </section>
-
-  <section>
     <AppFooter/>
-  </section>
 </template>
 
 <style lang="scss">
 
   @use './style/general.scss';
+
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
   
 </style>
