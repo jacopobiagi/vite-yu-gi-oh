@@ -18,8 +18,13 @@ export default {
 
 <template>
 
-    <main class="d-flex align-items-center justify-content-center">
-        <select name="" id=""></select>
+    <main class="d-flex flex-column align-items-center justify-content-center">
+        <select name="sel" id="selezionaTipo">
+            <option value="">seleziona tipo</option>
+            <option value="">Spell card</option>
+            <option value="">alien</option>
+            <option value="">effect monster</option>
+        </select>
         <div class="container-list ">
             <div class="header-list w-100 text-white bg-dark d-flex justify-content-arount align-items-center">
                 <h2 class="p-3">Found 20 cards</h2>
@@ -34,8 +39,6 @@ export default {
             </div>
         </div>
 
-
-        <!--  -->
     </main>
     
 </template>
