@@ -23,7 +23,7 @@ export default{
         .get(store.apiURL)
         .then(res => {
           store.cardList = res.data;
-          console.log(store.cardList);
+          console.log(store.cardList.data);
         })
         .catch(err =>{
           console.log("Errori",err);
