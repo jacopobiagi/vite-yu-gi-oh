@@ -2,15 +2,15 @@
 import axios from "axios";
 import { store } from "./store";
 
-import appHeader from './components/appHeader.vue';
-import appMain from './components/appMain.vue';
-import appFooter from './components/appFooter.vue';
+import AppHeader from './components/appHeader.vue';
+import AppMain from './components/appMain.vue';
+import AppFooter from './components/appFooter.vue';
 
 export default{
   components:{
-    appHeader,
-    appMain,
-    appFooter,
+    AppHeader,
+    AppMain,
+    AppFooter,
   },
   data(){
     return{
@@ -28,15 +28,15 @@ export default{
   
 <template>
   <section>
-    </appHeader>
+    </AppHeader>
   </section>
 
   <section>
-    </appMain>
+    </AppMain>
   </section>
 
   <section>
-    </appFooter>
+    </AppFooter>
   </section>
 </template>
 
