@@ -3,7 +3,7 @@ import axios from "axios";
 import { store } from "./store";
 
 import AppHeader from './components/appHeader.vue';
-import AppMain from './components/appMain.vue';
+import AppMain from './components/main/appMain.vue';
 import AppFooter from './components/appFooter.vue';
 
 export default{
@@ -20,23 +20,33 @@ export default{
   methods:{
     getCharacters(){
       axios 
-        .get(store.apiURL);
+        .get(store.apiURL)
+        .then(res => {
+          store.cardList = res.data;
+          console.log(store.cardList);
+        })
+        .catch(err =>{
+          console.log("Errori",err);
+        })
     }
+  },
+  created(){
+    this.getCharacters()
   }
 }
 </script>
   
 <template>
   <section>
-    </AppHeader>
+    <AppHeader/>
   </section>
 
   <section>
-    </AppMain>
+    <AppMain/>
   </section>
 
   <section>
-    </AppFooter>
+    <AppFooter/>
   </section>
 </template>
 
