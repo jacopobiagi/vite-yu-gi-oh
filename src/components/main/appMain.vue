@@ -14,17 +14,19 @@ export default {
     },
     methods:{
         stampType(){
+            store.paramType = document.getElementById("selezionaTipo").value;
             store.cardList.forEach(element => {
                 if(!this.store.archetype.includes(element.type)){
                     this.store.archetype.push(element.type);
                 }
             });
-            store.paramType=document.getElementById("selezionaTipo").value;
-            console.log(store.paramType)
         },
+        changeType(){
+            store.paramType = document.getElementById("selezionaTipo").value;
+        }
     },
-    mounted(){
-        this.stampType();
+    created(){
+        //this.stampType();
     }
 }
 </script>
@@ -32,10 +34,11 @@ export default {
 <template>
 
     <main class="d-flex flex-column align-items-center justify-content-center">
-        <select name="sel" id="selezionaTipo" @click="stampType" @input="$emit('select')">
+        <select name="sel" id="selezionaTipo" @click="stampType" @change="changeType">
             <option value="">Seleziona tipologia</option>
             <option :value="i" v-for="i in store.archetype">{{ i }}</option>
         </select>
+        <button @click="$emit('select')">invio</button>
         <div class="container-list ">
             <div class="header-list w-100 text-white bg-dark d-flex justify-content-arount align-items-center">
                 <h2 class="p-3">Found 20 cards</h2>

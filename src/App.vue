@@ -20,7 +20,7 @@ export default{
     getCharacters(){
 
       let myUrl = store.apiURL;
-      
+      console.log(store.paramType)
       if(store.paramType !== ""){
         myUrl += `?type=${store.paramType}`;
       }
@@ -30,7 +30,7 @@ export default{
         .then(res => {
           
           store.cardList = res.data.data.slice(0,40);
-          console.log(store.cardList);
+
         })
         .catch(err =>{
           console.log("Errori",err);
