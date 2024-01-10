@@ -4,13 +4,12 @@ import { store } from "./store";
 
 import AppHeader from './components/appHeader.vue';
 import AppMain from './components/main/appMain.vue';
-import AppFooter from './components/appFooter.vue';
+
 
 export default{
   components:{
     AppHeader,
     AppMain,
-    AppFooter,
   },
   data(){
     return{
@@ -20,18 +19,25 @@ export default{
   methods:{
     getCharacters(){
 
-      const limit = 20;
-      const offset = 0;
+      let myUrl = store.apiURL;
+      
+      if(store.paramType !== ""){
+        myUrl += `?type=${store.paramType}`;
+      }
+
       axios 
-        .get(store.apiURL)
+        .get(myUrl)
         .then(res => {
-          store.cardList = res.data.data.slice(0,20);
+          
+          store.cardList = res.data.data.slice(0,40);
           console.log(store.cardList);
         })
         .catch(err =>{
           console.log("Errori",err);
         })
-    }
+
+      
+    },
   },
   created(){
     this.getCharacters()
@@ -41,8 +47,7 @@ export default{
   
 <template>
     <AppHeader/>
-    <AppMain/>
-    <AppFooter/>
+    <AppMain @select="getCharacters"/>
 </template>
 
 <style lang="scss">

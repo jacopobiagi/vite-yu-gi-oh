@@ -1,7 +1,6 @@
 <script>
 
 import { store } from '../../store';
-
 import singleCard from './subMain/singleCard.vue';
 
 export default {
@@ -12,6 +11,20 @@ export default {
         return{
             store,
         }
+    },
+    methods:{
+        stampType(){
+            store.cardList.forEach(element => {
+                if(!this.store.archetype.includes(element.type)){
+                    this.store.archetype.push(element.type);
+                }
+            });
+            store.paramType=document.getElementById("selezionaTipo").value;
+            console.log(store.paramType)
+        },
+    },
+    mounted(){
+        this.stampType();
     }
 }
 </script>
@@ -19,11 +32,9 @@ export default {
 <template>
 
     <main class="d-flex flex-column align-items-center justify-content-center">
-        <select name="sel" id="selezionaTipo">
-            <option value="">seleziona tipo</option>
-            <option value="">Spell card</option>
-            <option value="">alien</option>
-            <option value="">effect monster</option>
+        <select name="sel" id="selezionaTipo" @click="stampType" @input="$emit('select')">
+            <option value="">Seleziona tipologia</option>
+            <option :value="i" v-for="i in store.archetype">{{ i }}</option>
         </select>
         <div class="container-list ">
             <div class="header-list w-100 text-white bg-dark d-flex justify-content-arount align-items-center">
